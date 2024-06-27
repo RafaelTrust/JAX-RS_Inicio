@@ -1,0 +1,16 @@
+package com.desafiorafael.repository;
+
+import java.util.Optional;
+
+import javax.inject.Singleton;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+@Singleton
+public class UsuarioRepositorio {
+    public Optional findAll(Session s, String id) {
+        Query query = s.createQuery("FROM \"Usuario\"");
+        return query.uniqueResultOptional();
+    }
+}

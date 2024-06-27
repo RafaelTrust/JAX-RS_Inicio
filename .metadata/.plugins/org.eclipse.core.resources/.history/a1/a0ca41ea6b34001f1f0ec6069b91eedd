@@ -1,0 +1,31 @@
+package com.desafiorafael.resources;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.desafiorafael.entity.Usuario;
+import com.desafiorafael.service.UsuarioService;
+
+@Path("/ola")
+public class RestOla {
+	private UsuarioService usuarioService;
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String ola() {
+		System.out.println("Entrou no servico...");
+		return new Date().toString();
+	}
+
+	@GET
+	@Path("/usuarios")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Usuario> listarUsuarios() {
+		return usuarioService.getAllUsuarios();
+	}
+}
